@@ -38,7 +38,7 @@ echo "";
 
 echo "Editing config file"
 #rm -r ./ServerConfig.toml
-cat << EOF > ServerConfig.toml
+cat << EOF > BeamMP_Server/ServerConfig.toml
 [General]
 AuthKey = '${auth_key}'
 Debug = false
@@ -75,4 +75,4 @@ echo "Map: gridmap_v2"
 echo ""
 echo "You can always change the settings in ServerConfig.toml"
 echo "Launch the server by running:"
-echo "sudo ./BeamMP_Server/BeamMP*"
+echo "cd BeamMP_Server && sudo ./BeamMP*"
