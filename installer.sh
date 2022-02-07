@@ -58,9 +58,7 @@ echo "Launching server"
 #echo "Press CTRL-C after 'Authenticated'!"
 #echo "Press CTRL-C after 'Authenticated'!"
 chmod +x ./BeamMP-Server-linux
-sudo ./BeamMP-Server-linux
-PID=$!
-kill -INT -$PID
+sudo ./BeamMP-Server-linux & PID=$! & kill -INT -$PID
 echo "Server stopped"
 
 PUBLIC_IP="$(cut -d ' ' -f 1 <<< "$(hostname -I)")"
