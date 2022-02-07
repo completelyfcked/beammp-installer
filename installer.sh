@@ -27,13 +27,14 @@ sudo apt-get install make
 sudo apt-get install cmake
 sudo apt-get install g++
 echo "Installed Dependencies"
-
+echo "";
 echo "Server Name: ";
 read server_name;
 echo "Auth Key: ";
 read auth_key;
 echo "Description: ";
 read description;
+echo "";
 
 echo "Editing config file"
 #rm -r ./ServerConfig.toml
@@ -50,20 +51,27 @@ Port = 30814
 Private = true
 ResourceFolder = 'Resources'
 EOF
-echo "Wrote config"
+echo "Edited config file"
 
 echo "Launching server"
-echo "Press CTRL-C after 'Authenticated'!\nPress CTRL-C after 'Authenticated'!\nPress CTRL-C after 'Authenticated'!"
+#echo "Press CTRL-C after 'Authenticated'!"
+#echo "Press CTRL-C after 'Authenticated'!"
+#echo "Press CTRL-C after 'Authenticated'!"
 chmod +x ./BeamMP-Server-linux
 sudo ./BeamMP-Server-linux
+PID=$!
+kill -INT -$PID
 echo "Server stopped"
 
 PUBLIC_IP="$(cut -d ' ' -f 1 <<< "$(hostname -I)")"
-echo "\nServer has been installed!"
+echo ""
+echo "Server has been installed!"
 echo "Public IP: ${PUBLIC_IP}"
 echo "Server Name: ${server_name}"
 echo "Port: 30814"
 echo "Private Server: true"
 echo "Map: gridmap_v2"
-echo "\nYou can always change the settings in ServerConfig.toml"
-echo "Launch the server by running:\nsudo ./BeamMP*"
+echo ""
+echo "You can always change the settings in ServerConfig.toml"
+echo "Launch the server by running:"
+echo "sudo ./BeamMP*"
