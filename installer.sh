@@ -14,6 +14,7 @@ sudo apt-get install unzip
 unzip ./zip.zip
 rm -r BeamMP-Server.exe
 rm -r zip.zip
+
 echo "Installing Dependencies"
 sudo apt-get install libz-dev
 sudo apt-get install rapidjson-dev
@@ -26,15 +27,14 @@ sudo apt-get install make
 sudo apt-get install cmake
 sudo apt-get install g++
 echo "Installed Dependencies"
+
 echo "Server Name: ";
 read server_name;
 echo "Auth Key: ";
 read auth_key;
 echo "Description: ";
 read description;
-echo "Running server for first time"
-chmod +x ./BeamMP-Server-linux
-sudo ./BeamMP-Server-linux
+
 echo "Editing config file"
 rm -r ./ServerConfig.toml
 cat << EOF > ServerConfig.toml
@@ -51,4 +51,21 @@ Private = true
 ResourceFolder = 'Resources'
 EOF
 echo "Wrote config"
+
+echo "Launching server"
+chmod +x ./BeamMP-Server-linux
 sudo ./BeamMP-Server-linux
+PID=$!
+sleep 10
+kill $PID
+echo "Server stopped"
+
+PUBLIC_IP="$(cut -d ' ' -f 1 <<< "$(hostname -I)")"
+echo "\nServer is setup"
+echo "Public IP: ${PUBLIC_IP}"
+echo "Server Name: ${server_name}"
+echo "Port: 30814"
+echo "Private Server: true"
+echo "Map: gridmap_v2"
+echo "\nYou can always change the settings in ServerConfig.toml"
+echo "Launch the server by running:\nsudo ./BeamMP*"
