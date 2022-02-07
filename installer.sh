@@ -36,7 +36,7 @@ echo "Description: ";
 read description;
 
 echo "Editing config file"
-rm -r ./ServerConfig.toml
+#rm -r ./ServerConfig.toml
 cat << EOF > ServerConfig.toml
 [General]
 AuthKey = '${auth_key}'
@@ -53,15 +53,13 @@ EOF
 echo "Wrote config"
 
 echo "Launching server"
+echo "Press CTRL-C after 'Authenticated'!\nPress CTRL-C after 'Authenticated'!\nPress CTRL-C after 'Authenticated'!"
 chmod +x ./BeamMP-Server-linux
 sudo ./BeamMP-Server-linux
-PID=$!
-sleep 10
-kill $PID
 echo "Server stopped"
 
 PUBLIC_IP="$(cut -d ' ' -f 1 <<< "$(hostname -I)")"
-echo "\nServer is setup"
+echo "\nServer has been installed!"
 echo "Public IP: ${PUBLIC_IP}"
 echo "Server Name: ${server_name}"
 echo "Port: 30814"
