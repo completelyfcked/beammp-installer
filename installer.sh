@@ -53,17 +53,20 @@ ResourceFolder = 'Resources'
 EOF
 echo "Edited config file"
 
-echo "Launching server"
-#echo "Press CTRL-C after 'Authenticated'!"
-#echo "Press CTRL-C after 'Authenticated'!"
-#echo "Press CTRL-C after 'Authenticated'!"
 chmod +x ./BeamMP-Server-linux
-sudo ./BeamMP-Server-linux & PID=$! & kill -INT -$PID
-echo "Server stopped"
+echo "+x permission given to 'BeamMP-Server-linux'"
+
+#echo "Launching server"
+#echo "Press CTRL-C after 'Authenticated'!"
+#echo "Press CTRL-C after 'Authenticated'!"
+#echo "Press CTRL-C after 'Authenticated'!"
+#chmod +x ./BeamMP-Server-linux
+#sudo ./BeamMP-Server-linux & PID=$! & kill -INT -$PID
+#echo "Server stopped"
 
 PUBLIC_IP="$(cut -d ' ' -f 1 <<< "$(hostname -I)")"
 echo ""
-echo "Server has been installed!"
+echo "Server installed!"
 echo "Public IP: ${PUBLIC_IP}"
 echo "Server Name: ${server_name}"
 echo "Port: 30814"
