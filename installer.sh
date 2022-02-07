@@ -6,7 +6,7 @@ if ! [ -x "$(command -v curl)" ]; then
   exit 1
 fi
 
-REPO_URL=""
+REPO_URL="https://raw.githubusercontent.com/completelyfcked/beammp-installer/main/"
 
 wget https://www.beammp.com/server/BeamMP_Server.zip
 mkdir BeamMP_Server && mv ./BeamMP_Server.zip ./BeamMP_Server/zip.zip && cd BeamMP_Server
@@ -26,6 +26,29 @@ sudo apt-get install make
 sudo apt-get install cmake
 sudo apt-get install g++
 echo "Installed Dependencies"
+echo "Server Name: ";
+read server_name;
+echo "Auth Key: ";
+read auth_key;
+echo "Description: ";
+read description;
 echo "Running server for first time"
 chmod +x ./BeamMP-Server-linux
+sudo ./BeamMP-Server-linux
+echo "Editing config file"
+rm -r ./ServerConfig.toml
+cat << EOF > ServerConfig.toml
+[General]
+AuthKey = '${auth_key}'
+Debug = false
+Description = '${description}'
+Map = '/levels/gridmap_v2/info.json'
+MaxCars = 1
+MaxPlayers = 10
+Name = '${server_name}'
+Port = 30814
+Private = true
+ResourceFolder = 'Resources'
+EOF
+echo "Wrote config"
 sudo ./BeamMP-Server-linux
