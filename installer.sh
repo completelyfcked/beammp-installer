@@ -8,10 +8,10 @@ fi
 
 REPO_URL="https://raw.githubusercontent.com/completelyfcked/beammp-installer/main/"
 
+mkdir BeamMP_Server && cd BeamMP_Server
 wget https://www.beammp.com/server/BeamMP_Server.zip
-mkdir BeamMP_Server && mv ./BeamMP_Server.zip ./BeamMP_Server/zip.zip && cd BeamMP_Server
 sudo apt-get install unzip
-unzip ./zip.zip
+unzip ./BeamMP_Server.zip
 rm -r BeamMP-Server.exe
 rm -r zip.zip
 
