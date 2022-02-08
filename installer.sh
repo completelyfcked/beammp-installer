@@ -6,6 +6,15 @@ if ! [ -x "$(command -v curl)" ]; then
   exit 1
 fi
 
+echo "";
+echo "Server name from KeyMaster: ";
+read server_name;
+echo "Auth key from KeyMaster";
+read auth_key;
+echo "Description: ";
+read description;
+echo "";
+
 REPO_URL="https://raw.githubusercontent.com/completelyfcked/beammp-installer/main/"
 
 mkdir BeamMP_Server && cd BeamMP_Server
@@ -27,14 +36,6 @@ sudo apt-get install make
 sudo apt-get install cmake
 sudo apt-get install g++
 echo "Installed Dependencies"
-echo "";
-echo "Server Name: ";
-read server_name;
-echo "Auth Key: ";
-read auth_key;
-echo "Description: ";
-read description;
-echo "";
 
 echo "Editing config file"
 #rm -r ./ServerConfig.toml
